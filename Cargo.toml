@@ -10,7 +10,7 @@ repository = "https://source.moe/XTEX-VNET/peerd.git"
 
 [dependencies]
 anyhow = { version = "1.0.68", features = ["backtrace"] }
-base64 = "0.20.0"
+base64 = "0.21.0"
 cidr = "0.2.1"
 clap = { version = "4.0.32", features = ["derive"] }
 crc32fast = "1.3.2"
