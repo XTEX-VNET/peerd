@@ -408,15 +408,16 @@ dependencies = [
 
 [[package]]
 name = "genetlink"
-version = "0.2.3"
+version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9431aa0084f7525d009197ec4ab32381ed3881a9c44f90d3ab8591a33fbdfa78"
+checksum = "a1bc23d478336747f4317fb34e4f1a6c3d0030caf756e057708e2677afceafad"
 dependencies = [
  "futures",
- "netlink-packet-core",
+ "log",
+ "netlink-packet-core 0.5.0",
  "netlink-packet-generic",
  "netlink-packet-utils",
- "netlink-proto",
+ "netlink-proto 0.11.1",
  "thiserror",
  "tokio",
 ]
@@ -723,15 +724,27 @@ dependencies = [
 ]
 
 [[package]]
-name = "netlink-packet-generic"
-version = "0.3.1"
+name = "netlink-packet-core"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "94a5d5ed7a2e8303cde48c4c75b9cbe004d1df98bdd0183aea8f4db7f010cb00"
+checksum = "7e5cf0b54effda4b91615c40ff0fd12d0d4c9a6e0f5116874f03941792ff535a"
 dependencies = [
  "anyhow",
  "byteorder",
  "libc",
- "netlink-packet-core",
+ "netlink-packet-utils",
+]
+
+[[package]]
+name = "netlink-packet-generic"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6c2b2fb3594ee2c5f4076579104ee6f2a74cf138e608a5f07ca31ee929a9367f"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "libc",
+ "netlink-packet-core 0.5.0",
  "netlink-packet-utils",
 ]
 
@@ -745,15 +758,15 @@ dependencies = [
  "bitflags",
  "byteorder",
  "libc",
- "netlink-packet-core",
+ "netlink-packet-core 0.4.2",
  "netlink-packet-utils",
 ]
 
 [[package]]
 name = "netlink-packet-utils"
-version = "0.5.1"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "25af9cf0dc55498b7bd94a1508af7a78706aa0ab715a73c5169273e03c84845e"
+checksum = "0ede8a08c71ad5a95cdd0e4e52facd37190977039a4704eb82a283f713747d34"
 dependencies = [
  "anyhow",
  "byteorder",
@@ -784,7 +797,22 @@ dependencies = [
  "bytes",
  "futures",
  "log",
- "netlink-packet-core",
+ "netlink-packet-core 0.4.2",
+ "netlink-sys",
+ "thiserror",
+ "tokio",
+]
+
+[[package]]
+name = "netlink-proto"
+version = "0.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "26305d12193227ef7b8227e7d61ae4eaf174607f79bd8eeceff07aacaefde497"
+dependencies = [
+ "bytes",
+ "futures",
+ "log",
+ "netlink-packet-core 0.5.0",
  "netlink-sys",
  "thiserror",
  "tokio",
@@ -792,9 +820,9 @@ dependencies = [
 
 [[package]]
 name = "netlink-sys"
-version = "0.8.3"
+version = "0.8.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "92b654097027250401127914afb37cb1f311df6610a9891ff07a757e94199027"
+checksum = "260e21fbb6f3d253a14df90eb0000a6066780a15dd901a7519ce02d77a94985b"
 dependencies = [
  "bytes",
  "futures",
@@ -1166,7 +1194,7 @@ dependencies = [
  "futures",
  "log",
  "netlink-packet-route",
- "netlink-proto",
+ "netlink-proto 0.10.0",
  "nix",
  "thiserror",
  "tokio",
